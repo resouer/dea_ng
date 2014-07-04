@@ -70,3 +70,7 @@ stacks:
 
 placement_properties:
   zone: "CRAZY_TOWN"
+
+dea_feature_options:
+  ssd: true
+  security: true
