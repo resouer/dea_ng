@@ -77,6 +77,7 @@ module Dea::Protocol::V1
         "available_disk" => message[:available_disk],
         "app_id_to_count" => message[:app_id_to_count],
         "placement_properties" => {"zone" => message[:placement_zone]},
+        "dea_features" => message[:dea_features],
       }
     end
   end
