@@ -98,10 +98,10 @@ describe Dea::Responders::DeaLocator do
   end
 
   describe "#advertise" do
-    let(:config_overrides) { { "stacks" => ["stack-1", "stack-2"] } }
+    let(:config_overrides) { { "stacks" => ["stack-1", "stack-2"], "dea_features" =>
+        { "ssd" => true, "security" => true } } }
     let(:available_disk) { 12345 }
     let(:available_memory) { 45678 }
-    let(:dea_features) {{"ssd" => true, "security" => "true"}}
     before do
       resource_manager.stub(app_id_to_count: {
         "app_id_1" => 1,
@@ -109,7 +109,6 @@ describe Dea::Responders::DeaLocator do
       })
       resource_manager.stub(:remaining_memory => available_memory)
       resource_manager.stub(:remaining_disk => available_disk)
-      resource_manager.stub(:dea_features =>  dea_featrues)
     end
 
     it "publishes 'dea.advertise' message" do
@@ -126,10 +125,7 @@ describe Dea::Responders::DeaLocator do
           "placement_properties" => {
             "zone" => "default"
           },
-          "dea_features" => {
-            "ssd" => true,
-            "security" => true
-          }
+          "dea_features" =>  { "ssd" => true, "security" => true } 
         }
       )
       subject.advertise
